@@ -7,9 +7,34 @@ export default function SignIn() {
     
 
   return (
-    <div>
-      this is signin page
-      <button className="  btn btn-primary" onClick={()=>navigate("/profile")}>Go to Profile</button>
+    <div className="hero min-h-screen bg-base-200">
+
+  <div className="hero-content flex-col lg:flex-row-reverse">
+
+    {/* main section written content  */}
+    <div className="text-center lg:text-left ml-5">
+      <h1 className="text-5xl font-bold normal-case ">Welcome to <span className='normal-case text-orange-500'>BlogStack</span></h1>
+      <p className="py-6">A perfect platform for you  to craft informative blogs and discover new content , category wise.</p>
     </div>
+
+
+{/* sign in card */}
+    <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 ">
+      <div className="card-body">
+        
+        <div >
+            <p className='justify-center text-center'>Sign in With Google and and start writing amazing blogs on <span className='normal-case font-bold text-orange-500'>BlogStack</span> </p>
+        </div>
+
+        <div className="form-control mt-6">
+          <button className="btn btn-primary">Continue with Google</button>
+        </div>
+
+      </div>
+    </div>
+
+
+  </div>
+</div>
   )
 }
