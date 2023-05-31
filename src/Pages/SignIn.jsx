@@ -1,6 +1,8 @@
 import React from 'react'
 import { useNavigate } from 'react-router';
 
+import OAuth from '../Components/OAuth';
+
 export default function SignIn() {
     
     const navigate = useNavigate();
@@ -26,9 +28,7 @@ export default function SignIn() {
             <p className='justify-center text-center'>Sign in With Google and and start writing amazing blogs on <span className='normal-case font-bold text-orange-500'>BlogStack</span> </p>
         </div>
 
-        <div className="form-control mt-6">
-          <button className="btn btn-primary">Continue with Google</button>
-        </div>
+        <OAuth/>
 
       </div>
     </div>
