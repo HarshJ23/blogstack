@@ -1,12 +1,50 @@
 import React from 'react'
-import { useNavigate } from "react-router-dom";
+import { useNavigate ,  useLocation } from "react-router-dom";
 import {HiHome} from 'react-icons/hi'
 import {CgProfile} from 'react-icons/cg'
 import {VscSignIn} from 'react-icons/vsc'
+import {useState,useEffect} from 'react'
+import { getAuth , onAuthStateChanged } from "firebase/auth";
+
+
 
 
 
 export default function Navbar() {
+
+  // useState hook to set status of user and accordingly change the icon between sign-in and profile icon 
+  const [pageState , setPageState] = useState(<VscSignIn className="h-6 w-6"/> );
+
+
+  const location = useLocation();
+  const auth = getAuth();
+  // const user = auth.currentUser;
+
+function pathMatchRoute(route)
+{
+  if(route === location.pathname ){
+    return true;
+  }
+}
+
+  useEffect(()=>{
+   
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // user is signed-in
+        setPageState(<CgProfile className='h-6 w-6'/>);
+      
+        // const uid = user.uid;
+        // ...
+      } else {
+        // User is signed out
+        setPageState(<VscSignIn className="h-6 w-6"/> );
+     
+      }
+    });
+
+
+  },[auth]);
 
 const navigate = useNavigate();
 
@@ -35,14 +73,15 @@ const navigate = useNavigate();
   {/* end icons of navbar  */}
 <div className="navbar-end">
 
-    <button className="btn btn-ghost btn-square border-b-orange-500 border-y-2" onClick={() => navigate("/")}>
+    <button className={`btn btn-ghost btn-square ${pathMatchRoute("/") &&   "border-b-orange-500 border-y-2"} `} onClick={() => navigate("/")}>
         <HiHome className="h-6 w-6"  />
        
     </button>
 
-    <button className="btn btn-ghost btn-square" onClick={()=>navigate("/sign-in")}>
+    <button className={`btn btn-ghost btn-square ${pathMatchRoute("/profile") ||pathMatchRoute("/sign-in")  &&   "border-b-orange-500 border-y-2"} `} onClick={()=>navigate("/profile")}>
         {/* <CgProfile className='h-6 w-6'/> */}
-        <VscSignIn className="h-6 w-6"/>
+        {/* <VscSignIn className="h-6 w-6"/> */}
+      {pageState}
     </button>
 
 </div>
