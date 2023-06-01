@@ -78,7 +78,8 @@ const navigate = useNavigate();
        
     </button>
 
-    <button className={`btn btn-ghost btn-square ${pathMatchRoute("/profile") ||pathMatchRoute("/sign-in")  &&   "border-b-orange-500 border-y-2"} `} onClick={()=>navigate("/profile")}>
+    <button className={`btn btn-ghost btn-square 
+    ${ pathMatchRoute("/profile") || pathMatchRoute("/sign-in")  &&   "border-b-orange-500 border-y-2"} `} onClick={()=>navigate("/profile")}>
         {/* <CgProfile className='h-6 w-6'/> */}
         {/* <VscSignIn className="h-6 w-6"/> */}
       {pageState}
