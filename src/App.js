@@ -6,6 +6,7 @@ import Profile from './Pages/Profile';
 import Navbar from './Components/Navbar';
 import SignIn from './Pages/SignIn';
 import PrivateRoute from './Components/PrivateRoute';
+import PublishBlog from './Pages/PublishBlog';
 
 function App() {
   return (
@@ -19,7 +20,11 @@ function App() {
       <Route path="/profile" element={<PrivateRoute/>}>
       <Route path="/profile"  element={<Profile/>}/>
       </Route>
-      
+
+      <Route path="/publish-blogs" element={<PrivateRoute/>}>
+      <Route path="/publish-blogs"  element={<PublishBlog/>}/>
+      </Route>
+
       <Route path="/sign-in"  element={<SignIn/>}/>
     </Routes>
   </Router>
