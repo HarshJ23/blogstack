@@ -1,6 +1,7 @@
 import React from 'react'
 import { useNavigate ,  useLocation } from "react-router-dom";
 import {HiHome} from 'react-icons/hi'
+import {BiHome} from 'react-icons/bi'
 import {CgProfile} from 'react-icons/cg'
 import {VscSignIn} from 'react-icons/vsc'
 import {useState,useEffect} from 'react'
@@ -74,7 +75,7 @@ const navigate = useNavigate();
 <div className="navbar-end">
 
     <button className={`btn btn-ghost btn-square ${pathMatchRoute("/") &&   "border-b-orange-500 border-y-2"} `} onClick={() => navigate("/")}>
-        <HiHome className="h-6 w-6"  />
+        <BiHome className="h-6 w-6"  />
        
     </button>
 
