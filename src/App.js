@@ -7,6 +7,8 @@ import Navbar from './Components/Navbar';
 import SignIn from './Pages/SignIn';
 import PrivateRoute from './Components/PrivateRoute';
 import PublishBlog from './Pages/PublishBlog';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -29,6 +31,17 @@ function App() {
     </Routes>
   </Router>
   
+  <ToastContainer
+position="bottom-right"
+hideProgressBar
+autoClose={2500}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+theme="light"
+/>
   </>
   );
 }
