@@ -4,6 +4,7 @@ import {HiHome} from 'react-icons/hi'
 import {BiHome} from 'react-icons/bi'
 import {CgProfile} from 'react-icons/cg'
 import {VscSignIn} from 'react-icons/vsc'
+import {TfiWrite} from 'react-icons/tfi'
 import {useState,useEffect} from 'react'
 import { getAuth , onAuthStateChanged } from "firebase/auth";
 
@@ -79,12 +80,19 @@ const navigate = useNavigate();
        
     </button>
 
+    <button className={`btn btn-ghost btn-square ${pathMatchRoute("/publish-blogs") &&   "border-b-orange-500 border-y-2"} `} onClick={() => navigate("/publish-blogs")}>
+        <TfiWrite className="h-6 w-6"  />
+       
+    </button>
+
     <button className={`btn btn-ghost btn-square 
     ${ pathMatchRoute("/profile") || pathMatchRoute("/sign-in")  &&   "border-b-orange-500 border-y-2"} `} onClick={()=>navigate("/profile")}>
         {/* <CgProfile className='h-6 w-6'/> */}
         {/* <VscSignIn className="h-6 w-6"/> */}
       {pageState}
     </button>
+
+
 
 </div>
 

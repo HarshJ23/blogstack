@@ -54,7 +54,7 @@ export default function PublishBlog() {
 <textarea 
       rows={rows}
       onChange={handleContentChange}
-      onKeyDown={handleKeyDown} className="textarea mt-14 textarea-ghost focus:outline-0 focus:border-r-0 focus:border-y-0  focus:bg-base-200 focus:border-l-2 text-base font-semibold overflow-hidden" placeholder="Article">
+      onKeyDown={handleKeyDown} className="textarea mt-14 textarea-ghost focus:outline-0 focus:border-r-0 focus:border-y-0  focus:bg-base-200 focus:border-l-2 text-base font-semibold overflow-hidden" placeholder="Start Writing ...">
 </textarea>
 
 
