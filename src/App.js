@@ -7,7 +7,6 @@ import PublishBlog from './Pages/PublishBlog';
 import { BrowserRouter as Router , Routes , Route } from 'react-router-dom';
 
 import Navbar from './Components/Navbar';
-
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -34,7 +33,6 @@ function App() {
 
     <Route path="/sign-in"  element={<SignIn/>}/>
   </Routes>
-   
   </Router>
   
   <ToastContainer

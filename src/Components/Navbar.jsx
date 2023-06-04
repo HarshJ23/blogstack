@@ -75,7 +75,7 @@ const navigate = useNavigate();
   {/* end icons of navbar  */}
 <div className="navbar-end">
 
-    <button className={`btn btn-ghost btn-square ${pathMatchRoute("/") &&   "border-b-orange-500 border-y-2"} `} onClick={() => navigate("/")}>
+    <button className={`btn btn-ghost btn-square ${pathMatchRoute("/") &&   "border-b-orange-500 border-y-2"} `} onClick={() => navigate("/") } >
         <BiHome className="h-6 w-6"  />
        
     </button>

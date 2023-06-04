@@ -4,14 +4,23 @@ import { useNavigate } from 'react-router';
 import {VscSignOut} from 'react-icons/vsc'
 import {LuEdit} from 'react-icons/lu';
 import {TfiWrite} from 'react-icons/tfi'
-import { doc, updateDoc } from "firebase/firestore";
+import { doc, updateDoc ,   orderBy } from "firebase/firestore";
 import {db} from '../firebase'
 import {toast} from 'react-toastify';
+import { collection, query, where, getDocs } from "firebase/firestore";
+import BlogItem from '../Components/BlogItem';
+
+
+
+
 export default function Profile() {
 
 const auth=getAuth();
 const navigate = useNavigate();
 const user = auth.currentUser; 
+
+
+const [blogs , setBlogs] = useState(null);
 
 const [profileData , setProfileData] = useState(
   {
@@ -29,7 +38,7 @@ function onLogout()
 {
   auth.signOut();
   navigate("/");
-  console.log("logged out");
+  // console.log("logged out");
 
 }
 
@@ -45,7 +54,7 @@ useEffect(()=>{
       const email = user.email;
       const uid = user.uid;
 
-      console.log(displayName,email,uid);
+      // console.log(displayName,email,uid);
     }
 
   }
@@ -94,11 +103,38 @@ setProfileData( (prevState) =>({
   catch (error) {
     console.log(error);
   }
+}
 
 
-  }
+// fetch data from a document in a collection in firebase 
+useEffect(()=>{
+
+async  function fetchBlogs(){
+
+  const blogRef = collection( db , "blogs");
+  const q = query(blogRef , where("useRef" , "==" , auth.currentUser.uid) , orderBy("timestamp" ,"desc"));
+  const querySnapshot = await getDocs(q);
+  let blogs =[];
+
+  querySnapshot.forEach((doc)=>{
+
+    return blogs.push(
+      {
+        id: doc.id,
+        data : doc.data(),
+      }
+    );
+
+  });
+
+setBlogs(blogs);
+console.log(blogs);
 
 
+}
+fetchBlogs();
+
+},[auth.currentUser.uid]);
 
 
 
@@ -131,8 +167,25 @@ setProfileData( (prevState) =>({
       </div>
 
 
+    
+      <div>
+      { blogs.length >0 && (
+<>
+<h1 className='text-center mt-6 text-xl font-bold'>My Listings</h1>
+<ul className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 mt-6 mb-6'>
+ { blogs.map((blog) => (
+<BlogItem key={blog.id} id={blog.id} blog={blog.data}  />
 
+  ))}
+</ul>
 
+</>
+
+      )}
+    </div>
+     
+
+    
 
     </div>
   )
