@@ -33,9 +33,9 @@ export default function PublishBlog() {
     <textarea 
           ref={textareaRef}
           value={text}
-          onChange={handleChange} className="textarea w-full  mt-12 textarea-ghost  focus:outline-0 focus:border-l-orange-500 border-2 focus:border-y-0   focus:border-r-0 focus:bg-base-200 focus:border-l-2 text-sm font-semibold overflow-hidden sm:text-base mb-4" placeholder="Start Crafting your thoughts ...">
+          onChange={handleChange} className="textarea w-full  mt-12 textarea-ghost   transition ease-in-out  focus:outline-0 focus:border-l-orange-500 border-2 focus:border-y-0   focus:border-r-0 focus:bg-base-200 focus:border-l-2 text-sm font-semibold overflow-hidden sm:text-base mb-4" placeholder="Start Crafting your thoughts ...">
     </textarea>
-    <input type="text" placeholder="One line description so your readers know what your content is about" className="input input-ghost w-full  focus:bg-base-200 focus:outline-0 focus:border-l-orange-500 border-2 font-semibold  sm:text-base text-xs focus:border-y-0 focus:border-r-0" />
+    <input type="text" placeholder="One line description so your readers know what your content is about" className="input input-ghost w-full transition ease-in-out  focus:bg-base-200 focus:outline-0 focus:border-l-orange-500 border-2 font-semibold  sm:text-base text-xs focus:border-y-0 focus:border-r-0" />
 
   </div>
 
