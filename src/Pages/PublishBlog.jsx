@@ -29,7 +29,7 @@ export default function PublishBlog() {
 <div className='flex flex-col sm:flex-row mt-6 w-full  border-4  '>
             
   <div class="form-control  flex flex-col  w-full  sm:w-2/3  border-4">
-    <input type="text" placeholder="Type here" className="input input-ghost w-full  focus:bg-base-200 focus:outline-0 focus:border-l-orange-500 border-2 font-semibold  sm:text-xl text-lg focus:border-y-0 focus:border-r-0" />
+    <input type="text" placeholder="Title" className="input input-ghost w-full  transition ease-in-out  focus:bg-base-200 focus:outline-0 focus:border-l-orange-500 border-2 font-semibold  sm:text-xl text-lg focus:border-y-0 focus:border-r-0" />
     <textarea 
           ref={textareaRef}
           value={text}
@@ -40,7 +40,7 @@ export default function PublishBlog() {
   </div>
 
 
-<div className='sm:ml-14  mt-4 flex flex-col  items-center'>
+<div className='sm:ml-14  mt-4  mb-3 flex flex-col  items-center'>
 
 <div className="form-control w-full max-w-xs mb-3">
   <label className="label">
@@ -62,7 +62,9 @@ export default function PublishBlog() {
 <input type="file" className="file-input file-input-bordered file-input-primary w-full max-w-xs" />
 </div>
 
+
 <button className="btn btn-outline hover:bg-orange-500  border-orange-500 border-2 text-orange-500 hover:border-orange-500 w-full ">PUBLISH</button>
+
 
 </div>
 
