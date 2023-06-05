@@ -4,6 +4,7 @@ import Profile from './Pages/Profile';
 import SignIn from './Pages/SignIn';
 import PrivateRoute from './Components/PrivateRoute'
 import PublishBlog from './Pages/PublishBlog';
+import BlogPage from './Pages/BlogPage';
 import { BrowserRouter as Router , Routes , Route } from 'react-router-dom';
 
 import Navbar from './Components/Navbar';
@@ -32,6 +33,8 @@ function App() {
     </Route>
 
     <Route path="/sign-in"  element={<SignIn/>}/>
+
+    <Route path="/category/:blogTitle/:blogId" element={<BlogPage/>}/>
   </Routes>
   </Router>
   

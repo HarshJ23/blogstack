@@ -154,7 +154,7 @@ fetchBlogs();
       { blogs && blogs.length > 0 && (
 
           <>
-          <h2 className='text-center mt-6 mb-6 font-bold text-3xl'>My blogs</h2>
+          <h2 className='text-center mt-6 mb-6 font-bold text-3xl'>My Blogs</h2>
 
           <ul className="sm:grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-2">
               {blogs.map((blog) => (
