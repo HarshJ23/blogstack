@@ -1,16 +1,22 @@
 import React from 'react';
 import {getAuth} from 'firebase/auth';
 import { useLocation , Link } from 'react-router-dom';
-import {CiShare1 , CiBookmark} from 'react-icons/ci';
-import {BsBookmark , BsBookmarkFill} from 'react-icons/bs'
+import {CiShare1 , CiEdit} from 'react-icons/ci';
+import {BsBookmark , BsBookmarkFill} from 'react-icons/bs';
+import {MdDelete} from 'react-icons/md';
 import {useState} from 'react';
 import {toast} from 'react-toastify';
+import { useNavigate } from 'react-router';
+
 
 export default function BlogItem( {blog , id}) 
 {
  const auth = getAuth();
  const location = useLocation();
  const [shareurl , setShareurl] = useState(false);
+ const navigate = useNavigate();
+
+
 
  function pathMatchRoute(route)
  {
@@ -22,14 +28,16 @@ export default function BlogItem( {blog , id})
  const handleShareClick = () => {
   const baseUrl = 'https://blogstack-harshj23.vercel.app';
   const url = `${baseUrl}/${blog.category}/${blog.title}/${id}`;
-  
-  navigator.clipboard.writeText(url)
+navigator.clipboard.writeText(url)
     .then(() => {
-      alert('URL copied to clipboard!');
+     toast.success("Link copied to clipboard");
     })
     .catch((error) => {
-      console.error('Error copying URL to clipboard:', error);
+     toast.error(error);
     });
+
+    navigate("/");
+
 };
 
 
@@ -39,9 +47,9 @@ export default function BlogItem( {blog , id})
 return (
 
     <li className='mb-4 mx-2 '>
-      <Link className='contents' to={`/${blog.category}/${blog.title}/${id}`}>
       <div className="card  hover:cursor-pointer lg:card-side bg-base-200 hover:shadow-lg hover:scale-95 transition-scale duration-200 ease-in ">
-  <figure><img src={blog.imgUrls} className='h-[200px] w-full sm:w-[200px] object-cover px-2 py-2' alt="Album"/></figure>
+ <img src={blog.imgUrls} className='h-[200px] w-full sm:w-[200px] py-3 px-3 object-cover ' alt="Album"/>
+      <Link className='contents' to={`/${blog.category}/${blog.title}/${id}`}>
   <div className="card-body">
 <div className='-mt-6 flex flex-row justify-between'>
     <span className=' text-xs font-semibold uppercase text-white bg-orange-500 p-1 rounded-md'>{blog.category}</span>
@@ -57,22 +65,37 @@ return (
     </span>
 
 </div>
-      <h2 className="card-title ">{blog.title}</h2>
+      <h2 className=" text-xl font-bold">{blog.title}</h2>
     <p className='text-sm'>{blog.description}</p>
 
 
 
 
-<div className="card-actions justify-end">
+<div className="card-actions justify-end mt-3">
       <ul className='flex flex-row space-x-10'>
+
+      {!pathMatchRoute("/profile") && (
+     
         <li className="tooltip tooltip-bottom font-bold" data-tip="Bookmark"><BsBookmark  className=' h-5 w-5 font-bold'/></li>
+
+        )}
         <li className="tooltip tooltip-bottom font-bold" data-tip="Share Link" onClick={handleShareClick}><CiShare1  className=' h-6 w-6 font-bold'/></li>
+        
+        {pathMatchRoute("/profile") && (
+     <>
+     <li className="tooltip tooltip-bottom font-bold" data-tip="Edit this blog"><CiEdit  className=' h-6 w-6 font-bold'/></li>
+     <li className="tooltip tooltip-bottom font-bold" data-tip="Delete this blog"><MdDelete  className=' h-6 w-6 font-bold'/></li>
+     </>
+
+     )}
+
+
       </ul>
 </div>
 
   </div>
-</div>
 </Link>
+</div>
     </li>
   )
 }
