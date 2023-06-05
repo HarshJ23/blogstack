@@ -18,7 +18,7 @@ const auth = getAuth();
 
     // all variables stored in "blogs" collection 
     const [blogData, setBlogData] = useState({
-    category : "" , 
+    category : "Sports" , 
     title: "",
     content:"",
     description:"",

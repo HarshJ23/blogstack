@@ -43,25 +43,6 @@ function onLogout()
 }
 
 
-// to fetch the profile details of  current user
-useEffect(()=>{
-  
-  function fetchUser()
-  {
-    if (user !== null) {
-      // The user object has basic properties such as display name, email, etc.
-      const displayName = user.displayName;
-      const email = user.email;
-      const uid = user.uid;
-
-      // console.log(displayName,email,uid);
-    }
-
-  }
-  fetchUser();
-
-},[user])
-
 
 // On change functionality for the name input 
  function onChange(e){
@@ -71,9 +52,8 @@ setProfileData( (prevState) =>({
   [e.target.id] :e.target.value, 
 
 })
-)
 
-}
+)}
 
 
 // to update the users document with name of user (to apply change)
@@ -129,8 +109,6 @@ async  function fetchBlogs(){
 
 setBlogs(blogs);
 console.log(blogs);
-
-
 }
 fetchBlogs();
 
@@ -162,27 +140,36 @@ fetchBlogs();
       <button className="btn btn-error btn-outline " onClick={onLogout}>SIGN OUT <VscSignOut className='h-6 w-6 m-2'/></button> 
 
       </div>
-      <button className="btn btn-primary mt-4 mb-4 "  onClick={()=>navigate("/publish-blogs")}>CREATE NEW BLOG <TfiWrite className='h-6 w-6 m-2' /> </button>
-      
+
+      <div className='flex flex-row mt-6 space-x-6 mb-4' >
+
+      <button className="btn btn-primary "  onClick={()=>navigate("/publish-blogs")}>CREATE NEW BLOG <TfiWrite className='h-6 w-6 m-2' /> </button>
+      <button className='btn btn-outline hover:bg-orange-500  border-orange-500 border-2 text-orange-500 hover:border-orange-500'>BOOKMARKS</button>
+      </div>
       </div>
 
 
     
-      <div>
-      { blogs.length >0 && (
-<>
-<h1 className='text-center mt-6 text-xl font-bold'>My Listings</h1>
-<ul className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 mt-6 mb-6'>
- { blogs.map((blog) => (
-<BlogItem key={blog.id} id={blog.id} blog={blog.data}  />
+     <div>
+      { blogs && blogs.length > 0 && (
 
-  ))}
-</ul>
+          <>
+          <h2 className='text-center mt-6 mb-6 font-bold text-3xl'>My blogs</h2>
 
-</>
+          <ul className="sm:grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-2">
+              {blogs.map((blog) => (
+                <BlogItem
+                  key={blog.id}
+                  id={blog.id}
+                  blog={blog.data}
+                />
+              ))}
+            </ul>
+
+          </>
 
       )}
-    </div>
+     </div>
      
 
     
