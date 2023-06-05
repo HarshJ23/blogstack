@@ -34,7 +34,7 @@ function App() {
 
     <Route path="/sign-in"  element={<SignIn/>}/>
 
-    <Route path="/category/:blogTitle/:blogId" element={<BlogPage/>}/>
+    <Route path="/:category/:blogTitle/:blogId" element={<BlogPage/>}/>
   </Routes>
   </Router>
   

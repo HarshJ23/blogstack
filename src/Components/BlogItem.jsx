@@ -63,14 +63,13 @@ return (
 
 
 
-
-
 <div className="card-actions justify-end">
       <ul className='flex flex-row space-x-10'>
-        <li className="tooltip tooltip-bottom font-bold "data-tip="Bookmark"><BsBookmark  className=' h-5 w-5 font-bold'/></li>
+        <li className="tooltip tooltip-bottom font-bold" data-tip="Bookmark"><BsBookmark  className=' h-5 w-5 font-bold'/></li>
         <li className="tooltip tooltip-bottom font-bold" data-tip="Share Link" onClick={handleShareClick}><CiShare1  className=' h-6 w-6 font-bold'/></li>
       </ul>
 </div>
+
   </div>
 </div>
 </Link>
