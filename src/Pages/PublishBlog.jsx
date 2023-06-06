@@ -134,7 +134,8 @@ const imgUrls = await Promise.all(
     ...blogData, 
     imgUrls, 
     timestamp:serverTimestamp(),
-    useRef: auth.currentUser.uid, 
+    useRef: auth.currentUser.uid,
+    Name: auth.currentUser.displayName, 
 }
 
 delete blogDataCopy.images;
