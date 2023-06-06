@@ -36,7 +36,7 @@ useEffect(()=>{
 
 const handleShareClick = () => {
   const baseUrl = 'https://blogstack-harshj23.vercel.app';
-  const url = `${baseUrl}/${blog.category}/${blog.title}/${blog.id}`;
+  const url = `${baseUrl}/${blog.category}/${blog.title}/${params.blogId}`;
 navigator.clipboard.writeText(url)
     .then(() => {
      toast.success("Link copied to clipboard");
