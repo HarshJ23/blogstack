@@ -36,7 +36,6 @@ navigator.clipboard.writeText(url)
      toast.error(error);
     });
 
-    navigate("/");
 
 };
 
