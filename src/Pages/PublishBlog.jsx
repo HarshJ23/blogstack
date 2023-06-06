@@ -18,14 +18,19 @@ const auth = getAuth();
 
     // all variables stored in "blogs" collection 
     const [blogData, setBlogData] = useState({
-    category : "Sports" , 
+    // category : "Sports" , 
     title: "",
     content:"",
     description:"",
     images:{}, 
   })
       //de-structuring the form data
-    const { category , title , content , description , images } = blogData;
+    const { 
+      // category , 
+      title , content , description , images } = blogData;
+
+
+      const [selectedCategory, setSelectedCategory] = useState("Sports");
 
   const textareaRef = useRef(null);
 const blogContent = true ;
@@ -136,6 +141,7 @@ const imgUrls = await Promise.all(
     timestamp:serverTimestamp(),
     useRef: auth.currentUser.uid,
     Name: auth.currentUser.displayName, 
+    category: selectedCategory,
 }
 
 delete blogDataCopy.images;
@@ -184,12 +190,16 @@ console.log(blogDataCopy);
   <label className="label">
     <span className="label-text">Content Category</span>
   </label>
-  <select  id="category" className="select select-bordered focus:outline-0 hover:shadow-lg">
-    <option id="Sports"  value={category}>Sports</option>
-    <option id="Tech" value={category}>Tech</option>
-    <option id="Politics" value={category}>Politics</option>
-    <option id="Science" value={category}>Science</option>
-    <option id="Entertainment" value={category}>Entertainment</option>
+  <select    value={selectedCategory}
+  onChange={(e) => setSelectedCategory(e.target.value)} className="select select-bordered focus:outline-0 hover:shadow-lg">
+    <option   value="Sports">Sports</option>
+    <option  value="Science and tech"> Science and Tech</option>
+    <option  value="Politics">Politics</option>
+    <option  value="Entertainment">Entertainment</option>
+    <option  value="Startups">Startups</option>
+    <option  value="Other">Other</option>
+
+
   </select>
 </div>
 

@@ -70,7 +70,7 @@ useEffect(()=>{
 
   <div className='flex flex-col space-y-4'>
        <p className='text-base italic'>{blog.description}</p>
-       <p className='font-semibold text-sm hover:cursor-pointer hover:text-orange-500'>-{blog.Name} <span className=' text-xs font-semibold uppercase text-white bg-orange-500 p-1 ml-6 rounded-md hover:no-underline'>{blog.category}</span></p>
+       <p className='font-semibold text-sm hover:cursor-pointer hover:text-orange-500'>- {blog.Name} <span className=' text-xs font-semibold uppercase text-white bg-orange-500 p-1 ml-6 rounded-md hover:no-underline'>{blog.category}</span></p>
         {/* <p>{blog.timestamp.toDate()}</p> */}
   </div>
   <ul  className='flex flex-row space-x-5 items-center hover:cursor-pointer'>
