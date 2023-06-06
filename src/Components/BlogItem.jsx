@@ -9,7 +9,7 @@ import {toast} from 'react-toastify';
 import { useNavigate } from 'react-router';
 
 
-export default function BlogItem( {blog , id}) 
+export default function BlogItem( {blog , id , onDelete}) 
 {
  const auth = getAuth();
  const location = useLocation();
@@ -83,7 +83,12 @@ return (
         {pathMatchRoute("/profile") && (
      <>
      <li className="tooltip tooltip-bottom font-bold" data-tip="Edit this blog"><CiEdit  className=' h-6 w-6 font-bold'/></li>
-     <li className="tooltip tooltip-bottom font-bold" data-tip="Delete this blog"><MdDelete  className=' h-6 w-6 font-bold'/></li>
+     {
+      onDelete && (
+        
+        <li className="tooltip tooltip-bottom font-bold" data-tip="Delete this blog"  onClick={() => onDelete(blog.id)} ><MdDelete  className=' h-6 w-6 font-bold'/></li>
+      )
+     }
      </>
 
      )}

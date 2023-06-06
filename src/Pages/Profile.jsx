@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router';
 import {VscSignOut} from 'react-icons/vsc'
 import {LuEdit} from 'react-icons/lu';
 import {TfiWrite} from 'react-icons/tfi'
-import { doc, updateDoc ,   orderBy } from "firebase/firestore";
+import { doc, updateDoc ,   orderBy, deleteDoc, } from "firebase/firestore";
 import {db} from '../firebase'
 import {toast} from 'react-toastify';
 import { collection, query, where, getDocs } from "firebase/firestore";
@@ -114,6 +114,23 @@ fetchBlogs();
 
 },[auth.currentUser.uid]);
 
+async function onDelete(blogId){
+
+  if(window.confirm("Are you sure you want to delete this listing? ")){
+    await deleteDoc(doc(db, "blogs", blogId));
+
+    const updatedBlog = blogs.filter(
+      (blog)=> blog.id !== blogId
+    );
+
+    setBlogs(updatedBlog);
+    toast.success("Listing Deleted Successfully ")
+
+
+  }
+
+}
+
 
 
   return (
@@ -162,6 +179,7 @@ fetchBlogs();
                   key={blog.id}
                   id={blog.id}
                   blog={blog.data}
+                  onDelete={()=>onDelete(blog.id)}
                 />
               ))}
             </ul>
