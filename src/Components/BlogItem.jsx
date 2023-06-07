@@ -57,7 +57,7 @@ return (
         {!pathMatchRoute("/profile") && (
       <p className='font-semibold text-sm hover:cursor-pointer hover:underline'>
 
-          -{auth.currentUser.displayName} 
+          -{blog.Name} 
       </p>
 
         )}
