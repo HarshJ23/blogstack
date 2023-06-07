@@ -7,7 +7,7 @@ import {MdDelete} from 'react-icons/md';
 import {BsBookmark , BsBookmarkFill} from 'react-icons/bs';
 import { getAuth } from 'firebase/auth';
 import {toast} from 'react-toastify';
-
+import TextToSpeech from '../Components/Text2Speech';
 
 export default function BlogPage() {
 
@@ -81,6 +81,7 @@ useEffect(()=>{
 
 </div>
 
+    <TextToSpeech text={blog.content} />
 <p className='leading-8 my-4 font-normal p-3'>{blog.content}</p>
 
 </>

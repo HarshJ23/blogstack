@@ -125,7 +125,7 @@ async function onDelete(blogId){
 
     setBlogs(updatedBlog);
     toast.success("Listing Deleted Successfully ")
-
+    navigate("/profile");
 
   }
 
@@ -187,6 +187,9 @@ async function onDelete(blogId){
           </>
 
       )}
+
+
+      
      </div>
      
 
