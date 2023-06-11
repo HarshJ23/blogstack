@@ -163,23 +163,24 @@ console.log(blogDataCopy);
   };
 
   return (
-    <main >
+    <main className='bg-white 454545'>
+
         <h1 className='text-3xl normal-case font-bold mt-4 ml-4'>Publish your blog</h1>
 
 
-<form onSubmit = {onSubmit}>
+<form onSubmit = {onSubmit} class='bg-white px-2' >
 
-<div className='flex flex-col sm:flex-row mt-6 w-full  border-4  '>
+<div className='flex flex-col sm:flex-row mt-6 w-full   '>
             
-  <div class="form-control  flex flex-col  w-full  sm:w-2/3  border-4">
-    <input type="text" placeholder="Title" id="title" value={title} onChange={handleChange} className="input input-ghost w-full focus:bg-base-200 focus:outline-0 focus:border-l-orange-500 border-2 font-semibold  sm:text-xl text-lg focus:border-y-0 focus:border-r-0" />
+  <div class="form-control  flex flex-col  w-full  sm:w-2/3  ">
+    <input type="text" placeholder="Title" id="title" value={title} onChange={handleChange} className="input  text-[#454545]  input-ghost w-full focus:bg-white focus:outline-0 focus:border-l-orange-500 border-2 font-semibold  sm:text-xl text-lg focus:border-y-0 focus:border-r-0" />
     <textarea 
           ref={textareaRef}
           value={content}
           id="content"
-          onChange={handleChange}  className="textarea w-full  mt-12 textarea-ghost  focus:outline-0 focus:border-l-orange-500 border-2 focus:border-y-0   focus:border-r-0 focus:bg-base-200 focus:border-l-2 text-sm font-semibold overflow-hidden sm:text-base mb-4" placeholder="Start Crafting your thoughts ...">
+          onChange={handleChange}  className="textarea w-full  mt-12 textarea-ghost  text-[#454545]  focus:outline-0 focus:border-l-orange-500 border-2 focus:border-y-0   focus:border-r-0 focus:bg-white focus:border-l-2 text-sm font-semibold overflow-hidden sm:text-base mb-4" placeholder="Start Crafting your thoughts ...">
     </textarea>
-    <input type="text" id="description" placeholder="One line description so your readers know what your content is about" onChange={handleChange} className="input input-ghost w-full  focus:bg-base-200 focus:outline-0 focus:border-l-orange-500 border-2 font-semibold  sm:text-base text-xs focus:border-y-0 focus:border-r-0" />
+    <input type="text" id="description" placeholder="One line description so your readers know what your content is about" onChange={handleChange} className=" text-[#454545] input input-ghost w-full  focus:bg-white focus:outline-0 focus:border-l-orange-500 border-2 font-semibold  sm:text-base text-xs focus:border-y-0 focus:border-r-0" />
 
   </div>
 

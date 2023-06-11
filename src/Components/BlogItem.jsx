@@ -46,7 +46,7 @@ navigator.clipboard.writeText(url)
 return (
 
     <li className='mb-4 mx-4 '>
-      <div className="card  hover:cursor-pointer lg:card-side bg-base-200 hover:shadow-2xl transition-scale duration-200 ease-in ">
+      <div className="card  hover:cursor-pointer lg:card-side bg-white text-[#454545] hover:shadow-2xl transition-scale duration-200 ease-in ">
  <img src={blog.imgUrls} className='h-[200px] w-full sm:w-[200px] py-3 px-3 object-cover ' alt="Album"/>
       <Link className='contents' to={`/${blog.category}/${blog.title}/${id}`}>
   <div className="card-body">

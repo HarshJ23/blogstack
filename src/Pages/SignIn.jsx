@@ -9,7 +9,7 @@ export default function SignIn() {
     
 
   return (
-    <div className="hero min-h-screen bg-base-200">
+    <div className="hero min-h-screen bg-white mt-2">
 
   <div className="hero-content flex-col lg:flex-row-reverse">
 

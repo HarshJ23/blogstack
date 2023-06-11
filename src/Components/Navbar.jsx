@@ -52,7 +52,7 @@ const navigate = useNavigate();
 
 
   return (
-    <div className=' shadow-gray-200 shadow-sm bg-white'>
+    <div className=' shadow-gray-200 shadow-lg bg-white'>
 
     <header>
         <div className="navbar">
@@ -62,9 +62,12 @@ const navigate = useNavigate();
         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
       </label>
       <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 ">
-        <li onClick={() => navigate("/profile")}><a>Profile</a></li>
-        <li onClick={() => navigate("/")}><a>Homepage</a></li>
-        <li><a>About</a></li>
+        <li onClick={() => navigate("/profile")} className='bg-orange-500   font-bold text-white'><a>Profile</a></li>
+        <li onClick={() => navigate("/")} className='bg-orange-500   font-bold text-white'><a>Homepage</a></li>
+        <li className='bg-orange-200   hover:bg-orange-500 transition ease-in-out duration-100 font-bold hover:text-white'><a> Science and Tech</a></li>
+        <li className='bg-orange-200   hover:bg-orange-500 transition ease-in-out duration-100 font-bold hover:text-white'><a>Sports</a></li>
+        <li className='bg-orange-200   hover:bg-orange-500 transition ease-in-out duration-100 font-bold hover:text-white'><a>Startups</a></li>
+        <li className='bg-orange-200   hover:bg-orange-500 transition ease-in-out duration-100 font-bold hover:text-white'><a>Politics</a></li>
       </ul>
     </div>
   </div>

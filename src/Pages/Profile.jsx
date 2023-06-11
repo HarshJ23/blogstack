@@ -139,7 +139,7 @@ async function onDelete(blogId){
 
 <h1 className="normal-case text-3xl mt-3 font-bold">My Profile</h1>
 
-      <div className=' flex flex-col  items-center justify-center bg-white p-4 mt-4 rounded-md shadow-sm hover:shadow-xl active:shadow-xl'>
+      <div className=' flex flex-col  items-center justify-center bg-white p-4 mt-4 rounded-md shadow-xl hover:shadow-2xl transition ease-in-out duration-200 active:shadow-2xl'>
 
 
             <input type="text" placeholder="Name"  id="name" value={name} disabled={!changeProfile} onChange={onChange} className="input input-ghost  border-orange-500 input-warning w-full max-w-xs mt-4 mb-4" />

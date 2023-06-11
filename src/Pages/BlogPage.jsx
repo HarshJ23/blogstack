@@ -51,13 +51,13 @@ useEffect(()=>{
 // console.log(blog);
 
   return (
-    <main className='w-full sm:w-2/3 mx-auto my-4 px-3  border-2 '>
+    <main className='w-full sm:w-2/3 mx-auto my-4 px-3 text-[#454545]'>
 
       {blog && (
 
 <>
         <div
-                className="relative w-full overflow-hidden h-[300px] py-2 "
+                className="relative w-full overflow-hidden h-[300px] py-2 my-2 "
                 style={{
                   background: `url(${blog.imgUrls}) center no-repeat `,
                   backgroundSize: "cover",

@@ -156,19 +156,19 @@ console.log(entertainmentBlogs);
 
   fetchEntertainment();
 
-},[])
+ },[])
 
 
 
   return (
-    <div className='px-3'>
-    <div className="hero min-h-16 bg-white border-2  py-6 my-4 ">
+    <div className='px-3 '>
+    <div className="hero min-h-16 bg-white text-[#454545]  py-6 my-4 ">
   <div className="hero-content text-center">
     <div className="max-w-md">
       <h1 className="text-3xl font-bold">Discover best content</h1>
       <p className="py-6">A perfect platform to Create and Discover new content, category wise</p>
 <div className='flex flex-row justify-center space-x-4'>
-      <button className="btn btn-primary "  onClick={()=>navigate("/publish-blogs")}>CREATE NEW BLOG <TfiWrite className='h-6 w-6 m-2' /> </button>
+      <button className="btn bg-[#FF6000] hover:bg-[#FFA559] outline-0 border-orange-500 "  onClick={()=>navigate("/publish-blogs")}>CREATE NEW BLOG <TfiWrite className='h-6 w-6 m-2' /> </button>
       <button className="btn btn-primary " >DISCOVER</button>
 </div>
     </div>
