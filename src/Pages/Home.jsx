@@ -5,6 +5,8 @@ import { doc,   orderBy } from "firebase/firestore";
 import {db} from '../firebase'
 import { collection, query, where, getDocs ,   limit} from "firebase/firestore";
 import BlogItem from '../Components/BlogItem';
+import { Link } from 'react-scroll';
+
 
 
 export default function Home() {
@@ -162,25 +164,69 @@ console.log(entertainmentBlogs);
 
   return (
     <div className='px-3 '>
-    <div className="hero min-h-16 bg-white text-[#454545]  py-6 my-4 ">
+    <div className="hero min-h-16 bg-orange-200 text-[#454545]  py-6 my-4 ">
   <div className="hero-content text-center">
     <div className="max-w-md">
-      <h1 className="text-3xl font-bold">Discover best content</h1>
+      <h1 className="text-3xl font-bold uppercase">Discover best content</h1>
       <p className="py-6">A perfect platform to Create and Discover new content, category wise</p>
 <div className='flex flex-row justify-center space-x-4'>
       <button className="btn bg-[#FF6000] hover:bg-[#FFA559] outline-0 border-orange-500 "  onClick={()=>navigate("/publish-blogs")}>CREATE NEW BLOG <TfiWrite className='h-6 w-6 m-2' /> </button>
-      <button className="btn btn-primary " >DISCOVER</button>
+      <button className="btn btn-primary "   onClick={() =>
+    window.scrollTo({
+      top: document.getElementById('Startups').offsetTop,
+      behavior: 'smooth',
+    })
+  }>DISCOVER</button>
 </div>
     </div>
   </div>
 </div>
 
 <section>
+
+
+
+
+
+
+
+
+
+<div>
+      { startupBlogs && startupBlogs.length > 0 && (
+        
+        <Link to="Startups" id="Startups" smooth={true} duration={500}>
+        <h2 className='font-bold text-xl'>Recent in Startups</h2>
+        <p className='text-sm hover:text-orange-500 hover:cursor-pointer'>Show more in Startups</p>
+<ul className="sm:grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-2 my-3">
+    {startupBlogs.map((blog) => (
+      <BlogItem
+        key={blog.id}
+        id={blog.id}
+        blog={blog.data}
+      />
+    ))}
+  </ul>
+</Link>
+
+)}
+</div>
+
+
+
+
+
+
+
+
+
+
+
   <div>
       <div>
       { techBlogs && techBlogs.length > 0 && (
         
-        <>
+        <Link to="Scienceandtech" id="Scienceandtech" smooth={true} duration={500} >
         <h2 className='font-bold text-xl'>Recent in Science and Tech</h2>
         <p className='text-sm hover:text-orange-500 hover:cursor-pointer'>Show more in Science and Tech</p>
 <ul className="sm:grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-2 my-3">
@@ -192,10 +238,18 @@ console.log(entertainmentBlogs);
       />
     ))}
   </ul>
-</>
+</Link>
 
 )}
       </div>
+
+
+
+
+
+
+
+
 
 
 
@@ -220,25 +274,6 @@ console.log(entertainmentBlogs);
 </div>
 
 
-<div>
-      { startupBlogs && startupBlogs.length > 0 && (
-        
-        <>
-        <h2 className='font-bold text-xl'>Recent in Startups</h2>
-        <p className='text-sm hover:text-orange-500 hover:cursor-pointer'>Show more in Startups</p>
-<ul className="sm:grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-2 my-3">
-    {startupBlogs.map((blog) => (
-      <BlogItem
-        key={blog.id}
-        id={blog.id}
-        blog={blog.data}
-      />
-    ))}
-  </ul>
-</>
-
-)}
-</div>
 
 
 {/* politics */}

@@ -164,7 +164,7 @@ async function onEdit(blogId){
       <div className='flex flex-row mt-6 space-x-6 mb-4' >
 
       <button className="btn btn-primary "  onClick={()=>navigate("/publish-blogs")}>CREATE NEW BLOG <TfiWrite className='h-6 w-6 m-2' /> </button>
-      <button className='btn btn-outline hover:bg-orange-500  border-orange-500 border-2 text-orange-500 hover:border-orange-500'>BOOKMARKS</button>
+      {/* <button className='btn btn-outline hover:bg-orange-500  border-orange-500 border-2 text-orange-500 hover:border-orange-500'>BOOKMARKS</button> */}
       </div>
       </div>
 
