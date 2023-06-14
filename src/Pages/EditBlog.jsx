@@ -1,11 +1,11 @@
 import React from 'react'
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 import { useState, useRef, useEffect } from 'react';
-import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import {getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { getAuth } from "firebase/auth";
 import {v4 as uuidv4} from "uuid" ;
 import {toast} from 'react-toastify';
-import { serverTimestamp } from 'firebase/firestore';
+import {doc , serverTimestamp , getDoc, updateDoc } from 'firebase/firestore';
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../firebase";
 
@@ -15,6 +15,7 @@ export default function PublishBlog() {
 
     // const [text, setText] = useState('');
 const auth = getAuth();
+const params = useParams();
 const navigate = useNavigate();
 
     // all variables stored in "blogs" collection 
@@ -48,6 +49,28 @@ const blogContent = true ;
 
 
   // };
+
+
+// function to fetch doc data and autofill the initial data
+useEffect(()=>{
+
+    async function fetchBlog(){
+        const docRef = doc (db, "blogs" , params.blogId);
+        const docSnap = await getDoc(docRef);
+        if(docSnap.exists()){
+            setBlogData(docSnap.data());
+            console.log(docSnap.data().category);
+            setSelectedCategory(docSnap.data().category);
+        }else{
+            navigate("/");
+            toast.error("Blog does not exist");
+        }
+
+    }
+fetchBlog();
+},[navigate , params.blogId]);
+
+
 
   function handleChange(e){
 let boolean = null ; 
@@ -148,10 +171,11 @@ const imgUrls = await Promise.all(
 delete blogDataCopy.images;
 
 // add new document with a document ID
-const docRef = await addDoc(collection(db , "blogs") , blogDataCopy);
+const docRef =  doc(db , "blogs" , params.blogId);
+await updateDoc(docRef , blogDataCopy);
 console.log("Document written with ID: ", docRef.id);
 
-toast.success("Blog Published successfully");
+toast.success("Blog Edited successfully");
 navigate("/profile");
 console.log(blogDataCopy);
 }
@@ -167,7 +191,7 @@ console.log(blogDataCopy);
   return (
     <main className='bg-white 454545'>
 
-        <h1 className='text-3xl normal-case font-bold mt-4 ml-4'>Publish your blog</h1>
+        <h1 className='text-3xl normal-case font-bold mt-4 ml-4'>Edit your blog</h1>
 
 
 <form onSubmit = {onSubmit} class='bg-white px-2' >
@@ -182,7 +206,7 @@ console.log(blogDataCopy);
           id="content"
           onChange={handleChange}  className="textarea w-full  mt-12 textarea-ghost  text-[#454545]  focus:outline-0 focus:border-l-orange-500 border-2 focus:border-y-0   focus:border-r-0 focus:bg-white focus:border-l-2 text-sm font-semibold overflow-hidden sm:text-base mb-4" placeholder="Start Crafting your thoughts ...">
     </textarea>
-    <input type="text" id="description" placeholder="One line description so your readers know what your content is about" onChange={handleChange} className=" text-[#454545] input input-ghost w-full  focus:bg-white focus:outline-0 focus:border-l-orange-500 border-2 font-semibold  sm:text-base text-xs focus:border-y-0 focus:border-r-0" />
+    <input type="text" id="description" value={description} placeholder="One line description so your readers know what your content is about" onChange={handleChange} className=" text-[#454545] input input-ghost w-full  focus:bg-white focus:outline-0 focus:border-l-orange-500 border-2 font-semibold  sm:text-base text-xs focus:border-y-0 focus:border-r-0" />
 
   </div>
 
@@ -214,7 +238,7 @@ console.log(blogDataCopy);
 </div>
 
 
-<button type="submit" className="btn btn-outline hover:bg-orange-500  border-orange-500 border-2 text-orange-500 hover:border-orange-500  sm:w-full  ">PUBLISH</button>
+<button type="submit" className="btn btn-outline hover:bg-orange-500  border-orange-500 border-2 text-orange-500 hover:border-orange-500  sm:w-full  ">PUBLISH CHANGES</button>
 
 
 </div>

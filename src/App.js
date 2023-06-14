@@ -4,6 +4,7 @@ import Profile from './Pages/Profile';
 import SignIn from './Pages/SignIn';
 import PrivateRoute from './Components/PrivateRoute'
 import PublishBlog from './Pages/PublishBlog';
+import EditBlog from './Pages/EditBlog';
 import BlogPage from './Pages/BlogPage';
 import { BrowserRouter as Router , Routes , Route } from 'react-router-dom';
 
@@ -32,6 +33,11 @@ function App() {
     <Route path="/publish-blogs" element={<PrivateRoute/>}>
     <Route path="/publish-blogs"  element={<PublishBlog/>}/>
     </Route>
+
+    <Route path="/edit-blog" element={<PrivateRoute/>}>
+    <Route path="/edit-blog/:blogId"  element={<EditBlog/>}/>
+    </Route>
+
 
     <Route path="/sign-in"  element={<SignIn/>}/>
 

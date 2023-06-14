@@ -131,6 +131,9 @@ async function onDelete(blogId){
 
 }
 
+async function onEdit(blogId){
+  navigate(`/edit-blog/${blogId}`);
+}
 
 
   return (
@@ -180,6 +183,7 @@ async function onDelete(blogId){
                   id={blog.id}
                   blog={blog.data}
                   onDelete={()=>onDelete(blog.id)}
+                  onEdit = {()=>onEdit(blog.id)}
                 />
               ))}
             </ul>

@@ -1,13 +1,14 @@
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import { useEffect , useState } from 'react';
 import {db} from '../firebase';
-import {doc , getDoc} from 'firebase/firestore';
+import {doc , getDoc , deleteDoc} from 'firebase/firestore';
 import {CiShare1 , CiEdit} from 'react-icons/ci';
 import {MdDelete} from 'react-icons/md';
 import {BsBookmark , BsBookmarkFill} from 'react-icons/bs';
 import { getAuth } from 'firebase/auth';
 import {toast} from 'react-toastify';
 import TextToSpeech from '../Components/Text2Speech';
+import { Link } from 'react-router-dom';
 
 export default function BlogPage() {
 
@@ -16,6 +17,7 @@ export default function BlogPage() {
   const [shareurl , setShareurl] = useState(false);
 
   const auth = getAuth();
+  const navigate = useNavigate();
 
 
 // fetch the blog data
@@ -49,6 +51,9 @@ useEffect(()=>{
         
               }
 // console.log(blog);
+
+
+
 
   return (
     <main className='w-full sm:w-2/3 mx-auto my-4 px-3 text-[#454545]'>
